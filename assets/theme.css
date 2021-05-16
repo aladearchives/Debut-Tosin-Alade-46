@@ -1095,6 +1095,15 @@ textarea {
     display: table;
     clear: both; }
 
+.half-page-width {
+  *zoom: 1;
+  max-width: 600px;
+  margin: 0 auto; }
+.half-page-width::after {
+  content: '';
+  display: table;
+  clear: both; }
+
 .main-content {
   display: block;
   padding-top: 35px; }
@@ -2106,6 +2115,14 @@ body.prevent-scrolling {
     .page-width {
       padding-left: 22px;
       padding-right: 22px; } }
+
+.half-page-width {
+  padding-left: 27px;
+  padding-right: 27px; }
+@media only screen and (max-width: 749px) {
+  .half-page-width {
+    padding-left: 11px;
+    padding-right: 11px; } }
 
 .page-container {
   transition: all 0.45s cubic-bezier(0.29, 0.63, 0.44, 1);
