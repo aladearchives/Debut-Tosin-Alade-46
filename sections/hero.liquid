@@ -13,10 +13,19 @@
 {%- endif -%}
 
 <div data-section-id="{{ section.id }}" data-section-type="hero-section">
-{%- if section.settings.hero_layout == 'fixed_width' -%}
+  {%- if section.settings.custom_width > 0 -%}
+  <div class="half-page-width">
+    {%- style -%}
+      .half-page-width {
+      max-width: {{- section.settings.custom_width -}}% !important;
+      }
+    {%- endstyle -%}
+  {%- elsif section.settings.hero_layout == 'fixed_width' -%}
   <div class="page-width">
     {%- elsif section.settings.hero_layout == 'half_width' -%}
     <div class="half-page-width">
+
+
       {%- endif -%}
       {%- if section.settings.hero_layout == 'fixed_width' and section.settings.hero_size ==  'adapt' -%}
         {%- assign slide_width = 1090 -%}
@@ -184,6 +193,38 @@
       }
     },
     {
+      "type": "range",
+      "id": "custom_width",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 0,
+      "label": {
+        "cs": "vlastní šířka",
+        "da": "brugerdefineret bredde",
+        "de": "benutzerdefinierte Breite",
+        "en": "Custom width",
+        "es": "ancho personalizado",
+        "fi": "mukautettu leveys",
+        "fr": "largeur personnalisée",
+        "it": "larghezza personalizzata",
+        "ja": "カスタム幅",
+        "ko": "맞춤 너비",
+        "nb": "tilpasset bredde",
+        "nl": "aangepaste breedte",
+        "pl": "niestandardowa szerokość",
+        "pt-BR": "largura personalizada",
+        "pt-PT": "largura personalizada",
+        "sv": "Bild",
+        "th": "รูปภาพ",
+        "tr": "Görsel",
+        "vi": "Hình ảnh",
+        "zh-CN": "图片",
+        "zh-TW": "圖片"
+      }
+    },
+    {
       "type": "select",
       "id": "alignment",
       "label": {
@@ -202,12 +243,12 @@
         "pl": "Wyrównanie obrazu",
         "pt-BR": "Alinhamento da imagem",
         "pt-PT": "Alinhamento da imagem",
-        "sv": "Bildjustering",
-        "th": "การจัดวางรูปภาพ",
-        "tr": "Görsel hizalaması",
-        "vi": "Căn chỉnh hình ảnh",
-        "zh-CN": "图片对齐方式",
-        "zh-TW": "圖片對齊"
+        "sv": "anpassad bredd",
+        "th": "ความกว้างที่กำหนดเอง",
+        "tr": "özel genişlik",
+        "vi": "chiều rộng tùy chỉnh",
+        "zh-CN": "自定义宽度",
+        "zh-TW": "自定義寬度"
       },
       "default": "center",
       "options": [
